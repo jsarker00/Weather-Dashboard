@@ -1,4 +1,5 @@
 # Weather-Dashboard
-<img width="1440" alt="Screen Shot 2020-07-15 at 6 51 07 PM" src="https://user-images.githubusercontent.com/67039558/87607887-592d7200-c6cc-11ea-8ba0-ef7941cff583.png">
+<img width="1440" alt="Screen Shot 2020-07-21 at 6 01 24 PM" src="https://user-images.githubusercontent.com/67039558/88111631-460f1c00-cb7c-11ea-90b4-5df396c5aefc.png">
+
+Weather app showing all necessary temperature, humidity, UV index etc. The weather is shown for the next five days. You can search up any city adn their respected weather.
 https://tsarker921.github.io/Weather-Dashboard/
-Weather app showing all necessary temperature, humidity, UV index etc.

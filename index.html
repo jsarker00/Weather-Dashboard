@@ -1,130 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WEATHER DASHBOARD</title>
+    <title>Weather Dashboard</title>
+    <!-- bootstrap  -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="Assets/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- JS, Popper.js, and jQuery -->
-    <!-- <script
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <!-- city search form -->
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="cityInput" />
+          </div>
+          <button type="button" class="btn btn-primary" id="searchButton">
+            Search
+          </button>
+          <ul id="history"></ul>
+        </div>
+        <div class="col-md-10">
+          <!-- info about the city -->
+          <div class="row" id="today">
+            <div class="card" id="weather" style="width: 100%;"></div>
+          </div>
+          <div class="row" id="futureWeather"></div>
+        </div>
+      </div>
+    </div>
+    <!-- bootstrap stuff -->
+    <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
-    ></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-</head>
-
-<body>
-    <nav class="navbar sticky-top navbar-light bg-info text-center">
-        <h1>WEATHER</h1>
-    </nav>
-    <main class="container row">
-        <!-- Search Bar/Search History -->
-        <section class="col-md-4">
-            <div>
-                <nav class="navbar navbar-light bg-light">
-                    <h2>City Search</h2>
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                            id="city-search" />
-                        <button id="current-weather" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                            Click Here for the Weather
-                        </button>
-                        <!-- <button
-                id="five-day"
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
-                Click Here for 5-Day Forecast
-              </button> -->
-                    </form>
-                </nav>
-                <ul class="list-group" id="search-history">
-                    <li class="list-group-item"></li>
-                </ul>
-            </div>
-        </section>
-        <!-- Current Weather/5-Day Forecast -->
-        <!-- Current Weather -->
-        <article class="col-md-8 current-weather" style="width: 100px;">
-            <section class="row">
-                <div class="card w-75">
-                    <div class="card-body">
-                        <h5 class="card-title">TODAY'S WEATHER</h5>
-                        <p id="city-name"></p>
-                        <p id="date"></p>
-                        <img id="weather-icon" />
-                        <p>Temperature: <span id="temperature"></span></p>
-                        <p>Humidity: <span id="humidity"></span></p>
-                        <p>Wind Speed: <span id="wind-speed"></span></p>
-                        <p>UV Index: <span id="uv-index"></span></p>
-                    </div>
-                </div>
-            </section>
-            <!-- 5 Day Forecast  -->
-            <div class="row">
-                <div class="card border-dark mb-2" style="max-width: 12rem;">
-                    <div class="card-header cityNamecard" id='one'></div>
-                    <div class="card-body text-dark">
-                        <p id="date-one"></p>
-                        <img id="weather-icon-one" />
-                        <p class="card-text">Temperature: <span id='temperature-one'></span></p>
-                        <p class="card-text">Humidity: <span id='humidity-one'></span></p>
-                    </div>
-                </div>
-                <div class="card border-dark mb-2" style="max-width: 12rem;">
-                    <div class="card-header cityNamecard" id='two'></div>
-                    <div class="card-body text-dark">
-                        <p id="date-two"></p>
-                        <img id="weather-icon-two" />
-                        <p class="card-text">Temperature: <span id='temperature-two'></span></p>
-                        <p class="card-text">Humidity: <span id='humidity-two'></span></p>
-                    </div>
-                </div>
-                <div class="card border-dark mb-2" style="max-width: 12rem;">
-                    <div class="card-header cityNamecard" id='three'></div>
-                    <div class="card-body text-dark">
-                        <p id="date-three"></p>
-                        <img id="weather-icon-three" />
-                        <p class="card-text">Temperature: <span id='temperature-three'></span></p>
-                        <p class="card-text">Humidity: <span id='humidity-three'></span></p>
-                    </div>
-                </div>
-                <div class="card border-dark mb-2" style="max-width: 12rem;">
-                    <div class="card-header cityNamecard" id='four'></div>
-                    <div class="card-body text-dark">
-                        <p id="date-four"></p>
-                        <img id="weather-icon-four" />
-                        <p class="card-text">Temperature:<span id='temperature-four'></span></p>
-                        <p class="card-text">Humidity:<span id='humidity-four'></span></p>
-                    </div>
-                </div>
-                <div class="card border-dark mb-2" style="max-width: 12rem;">
-                    <div class="card-header cityNamecard" id='five'></div>
-                    <div class="card-body text-dark">
-                        <p id="date-five"></p>
-                        <img id="weather-icon-five" />
-                        <p class="card-text">Temperature: <span id='temperature-five'></span></p>
-                        <p class="card-text">Humidity: <span id='humidity-five'></span></p>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </article>
-    </main>
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <!-- moment js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="weather.js"></script>
-</body>
-
+  </body>
 </html>

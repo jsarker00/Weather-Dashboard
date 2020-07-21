@@ -1,15 +1,34 @@
-#uv-index {
+.card-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card {
+    padding: 10px;
+    margin: 10px;
+}
+
+img {
+    width: 50px;
+}
+
+.btn-history {
+    margin: 5px;
+}
+
+body {
+    background-color: lemonchiffon;
+}
+
+#today {
+    background-color: orange;
+}
+
+#weather {
+    background-color: pink;
+}
+
+.card-forecast {
+    background-color: lightseagreen;
     color: white;
-}
-
-.low {
-    background-color: green;
-}
-
-.moderate {
-    background-color: purple;
-}
-
-.high {
-    background-color: red;
 }
